@@ -1,0 +1,13 @@
+
+<table border="1">
+<tr>
+<td><a href="./welcome" >Accueil </a></td>
+<td><a href="./afficherArticles" >Liste des articles </a></td>
+<td><a href="./afficherCommande" >Commande en cours </a></td>
+<td width="400px">&nbsp;</td>
+<c:if test="${ ! empty adherent}">
+<td>Adherent : <b>${adherent}</b></td>
+<td><a href="./logout" >Se déconnecter</a></td>
+</c:if>
+</tr>
+</table>
