@@ -38,6 +38,14 @@ public class Commande {
 	public int getNbArticles() {
 		return lignes.size();
 	}
+
+	public double getPrixTotal() {
+		double prix = 0.0 ;
+		for ( LigneCommande ligne : lignes ) {
+			prix = prix + ligne.getPrixTotal();
+		}
+		return prix ;
+	}
 	
 	public LinkedList<LigneCommande> getLignes() {
 		return lignes ;

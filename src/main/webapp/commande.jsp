@@ -10,6 +10,8 @@
 </head>
 <body>
 <%@include file="HautPage.jspf" %>
+
+<c:if test="${ ! empty sessionScope.commande}">
 <h2>Votre commande </h2>   
 
 <table border="1">
@@ -21,7 +23,7 @@
  <td>Prix </td> 
  </tr>
  
- <c:forEach items="${sessionScope.commande.lignes}" var="ligne" >
+ <c:forEach items="${commande.lignes}" var="ligne" >
  <tr>
  <td>${ligne.code}</td> 
  <td>${ligne.nom}</td> 
@@ -30,16 +32,19 @@
  <td align="right" > <fmt:formatNumber type="number" minFractionDigits="2" value="${ligne.prixTotal}" /> </td> 
  </tr>
  </c:forEach>
+ <tr>
+ <td colspan="4">Total</td> 
+ <td align="right" style="font-weight :bold;"> <fmt:formatNumber type="number" minFractionDigits="2" value="${commande.prixTotal}" /> </td> 
+ </tr>
 
 </table>
 <br> 
 
-<c:if test="${sessionScope.commande.nbArticles > 0}">
 <a href="./annulerCommande">Annuler la commande</a>
 </c:if>
 
 <c:if test="${empty sessionScope.commande}">
-<h3>Aucun article commandé.</h3>
+<h3>Aucun article commandé pour l'instant.</h3>
 </c:if>
 
 </body>
