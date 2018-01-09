@@ -1,10 +1,7 @@
 package org.tp.servlet.actions ;
 
 import java.io.IOException;
-import java.util.LinkedList;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,9 +10,9 @@ import javax.servlet.http.HttpSession;
 
 import org.tp.bean.Article;
 import org.tp.bean.Commande;
-import org.tp.bean.ListeArticles;
 import org.tp.commons.Const;
 import org.tp.commons.Page;
+import org.tp.service.ArticleService;
 import org.tp.servlet.GenericActionServlet;
 
 /**
@@ -28,23 +25,13 @@ public class CommanderServlet extends GenericActionServlet
     //-----------------------------------------------------------------------------
     protected void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-    	String sPage = Page.COMMANDE ;
-    	LinkedList<Article> listeArticles = null ;
-    	
-        ServletContext servletContext = getServletContext();
-        if ( servletContext != null ) {
-        	Object o = servletContext.getAttribute(Const.LISTE_ARTICLES);
-        	if ( o != null ) {
-        		listeArticles = (LinkedList<Article>) o;
-        	}        	
-        }
         
     	String sIdArticle = request.getParameter("id");
     	if ( sIdArticle != null ) {
         	System.out.println("Id article = " + sIdArticle );
-    		Article article = ListeArticles.chercherArticle(listeArticles, sIdArticle);
-            HttpSession session = request.getSession();
+        	Article article = ArticleService.findArticle(sIdArticle);
     		if ( article != null ) {
+                HttpSession session = request.getSession();
     			Object o = session.getAttribute(Const.COMMANDE);
     	    	if ( o != null ) {
                 	System.out.println("Commande trouvée en session");
@@ -63,7 +50,7 @@ public class CommanderServlet extends GenericActionServlet
     		}
     	}
     	
-		forward(request, response, sPage);
+		forward(request, response, Page.ARTICLES);
     }
 
 }

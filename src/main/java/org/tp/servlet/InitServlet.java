@@ -10,11 +10,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.tp.bean.ListeAdherents;
-import org.tp.bean.ListeArticles;
-import org.tp.bean.ListePays;
 import org.tp.bean.Pays;
 import org.tp.commons.Const;
+import org.tp.service.AdherentService;
+import org.tp.service.ArticleService;
+import org.tp.service.PaysService;
 
 /**
  */
@@ -35,14 +35,12 @@ public class InitServlet extends javax.servlet.http.HttpServlet implements javax
         System.out.println("================================================");
 
         ServletContext servletContext = getServletContext();
-        if ( servletContext != null )
-        {
-        	servletContext.setAttribute(Const.LISTE_PAYS, ListePays.getList());
-        	servletContext.setAttribute(Const.LISTE_ADHERENTS, ListeAdherents.getList());
-        	servletContext.setAttribute(Const.LISTE_ARTICLES, ListeArticles.getList());
+        if ( servletContext != null ) {
+        	servletContext.setAttribute(Const.LISTE_PAYS, PaysService.getPays() );
+        	servletContext.setAttribute(Const.LISTE_ADHERENTS, AdherentService.getAdherents() );
+        	servletContext.setAttribute(Const.LISTE_ARTICLES, ArticleService.getArticles() );
         }
-        else
-        {
+        else {
         	System.out.println("ERREUR : ServletContext == NULL ! ");
         }
     }

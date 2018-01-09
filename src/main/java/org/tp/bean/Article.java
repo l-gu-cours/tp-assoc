@@ -8,7 +8,9 @@ public class Article {
 	private int    stock  ;
 	private double prix ;
 	
-	
+	public Article() {
+		super();
+	}
 	
 	public Article(String code, String nom, int stock, double prix) {
 		super();
@@ -24,26 +26,40 @@ public class Article {
 	public void setCode(String code) {
 		this.code = code;
 	}
+	
 	public String getNom() {
 		return nom;
 	}
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+	
 	public double getPrix() {
 		return prix;
 	}
 	public void setPrix(double prix) {
 		this.prix = prix;
 	}
+	
 	public int getStock() {
 		return stock;
 	}
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
-	
-	
-
+	public int incrementStock() {
+		stock++;
+		return stock;
+	}
+	public int incrementStock(int n) {
+		stock = stock + n ;
+		return stock;
+	}
+	public int decrementStock() {
+		if ( stock > 0 ) {
+			stock--;
+		}
+		return stock;
+	}
 	
 }

@@ -21,11 +21,13 @@
 		<mkdir dir="${dist_dir}" />
 		<delete file="${zip_file}" />
 		<zip destfile="${zip_file}"  >	
+			<zipfileset dir="./doc"         prefix="doc"         />		
 			<zipfileset dir="./src"         prefix="src"         />		
 			<zipfileset dir="." >
 				<filename name="*.xml"/>  <!-- build*.xml, pom.xml -->
 			</zipfileset>			
 		</zip>
+		<echo message="ZIP file in 'dist' folder (Press F5 to refresh workspace) " />
 	</target>
 
 </project>

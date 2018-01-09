@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core"   prefix="c" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"   prefix="fmt" %> 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -15,14 +16,18 @@
  <tr>
  <td>Code</td> 
  <td>Nom</td> 
- <td>Prix</td> 
+ <td>Prix Unitaire</td> 
+ <td>Nombre</td> 
+ <td>Prix </td> 
  </tr>
  
- <c:forEach items="${sessionScope.commande.liste}" var="article" >
+ <c:forEach items="${sessionScope.commande.lignes}" var="ligne" >
  <tr>
- <td>${article.code}</td> 
- <td>${article.nom}</td> 
- <td>${article.prix}</td> 
+ <td>${ligne.code}</td> 
+ <td>${ligne.nom}</td> 
+ <td align="right" > <fmt:formatNumber type="number" minFractionDigits="2" value="${ligne.prixUnitaire}" /></td> 
+ <td align="right" >${ligne.nombre}</td> 
+ <td align="right" > <fmt:formatNumber type="number" minFractionDigits="2" value="${ligne.prixTotal}" /> </td> 
  </tr>
  </c:forEach>
 

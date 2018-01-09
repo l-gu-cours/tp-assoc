@@ -14,7 +14,11 @@ public class Adherent {
 	private String motpasse ;
 	
 	
-	public Adherent(String nom, String prenom, String adresse, int codepost, String ville,  String codepays) {
+	public Adherent() {
+		super();
+	}
+	
+	public Adherent(String nom, String prenom, String adresse, int codepost, String ville, String codepays) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
@@ -72,6 +76,5 @@ public class Adherent {
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
-
 	
 }

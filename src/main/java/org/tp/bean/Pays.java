@@ -5,17 +5,23 @@ public class Pays {
 	private String code ;
 	private String nom ;
 	
+	public Pays() {
+		super();
+	}
+	
 	public Pays(String code, String nom) {
 		super();
 		this.code = code;
 		this.nom = nom;
 	}
+
 	public String getCode() {
 		return code;
 	}
 	public void setCode(String code) {
 		this.code = code;
 	}
+	
 	public String getNom() {
 		return nom;
 	}

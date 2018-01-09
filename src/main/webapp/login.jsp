@@ -23,7 +23,7 @@
 
 </form>
 
-<p>Pas encore enregistrez ? <a href="./creerCompte" >Creez votre compte...</a></p>
+<p>Pas encore enregistré ? <a href="./creerCompte" >Creez votre compte...</a></p>
 
 </body>
 </html>

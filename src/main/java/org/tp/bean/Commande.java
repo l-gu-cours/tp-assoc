@@ -1,32 +1,59 @@
 package org.tp.bean;
 
+import java.security.InvalidParameterException;
 import java.util.LinkedList;
 
 public class Commande {
 
-	LinkedList<Article> listCommande = new LinkedList<Article>();
+	private final LinkedList<LigneCommande> lignes = new LinkedList<LigneCommande>();
 	
-	//LinkedList listCatalogue = null ;
+	public void commanderArticle(Article article) {
+		if ( article == null ) {
+			throw new InvalidParameterException("'article' parameter is null");
+		}
+		if ( article.getStock() > 0 ) {
+			article.decrementStock();
+			LigneCommande ligne = getLigneCommande(article.getCode());
+			if ( ligne != null ) {
+				ligne.increment();
+				System.out.println("Commande : +1 article " + article.getCode() + " : " + article.getNom() );
+			}
+			else {
+				lignes.add(new LigneCommande(article, 1));
+				System.out.println("Commande : new article " + article.getCode() + " : " + article.getNom() );
+			}
+		}
+	}
 	
+	public void annuler() {
+		// Restore stock
+		for ( LigneCommande ligne : lignes ) {
+			Article article = ligne.getArticle();
+			article.incrementStock(ligne.getNombre());
+		}
+		// Remove all lines
+		lignes.clear();
+	}
 	
-//	public Commande(LinkedList listCatalogue) {
-//		super();
-//		//this.listCatalogue = listCatalogue;
-//	}
-
-	public void commanderArticle(Article a )
-	{
-		listCommande.add(a);
-		System.out.println("Article commandé : " + a.getCode() + " : " + a.getNom() );
+	public int getNbArticles() {
+		return lignes.size();
+	}
+	
+	public LinkedList<LigneCommande> getLignes() {
+		return lignes ;
 	}
 
-	public int getNbArticles()
-	{
-		return listCommande.size();
-	}
-	
-	public LinkedList<Article> getListe()
-	{
-		return listCommande ;
+	public LigneCommande getLigneCommande(String code) {
+		if ( code == null ) {
+			throw new InvalidParameterException("'code' parameter is null");
+		}
+		for ( LigneCommande ligne : lignes ) {
+			if ( ligne != null ) {
+				if ( ligne.getCode().equalsIgnoreCase(code) ) {
+					return ligne ;
+				}
+			}
+		}
+		return null ;
 	}
 }

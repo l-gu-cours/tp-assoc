@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.tp.bean.Commande;
 import org.tp.commons.Const;
 import org.tp.commons.Page;
 import org.tp.servlet.GenericActionServlet;
@@ -22,9 +23,13 @@ public class AnnulerCommandeServlet extends GenericActionServlet
     //-----------------------------------------------------------------------------
     protected void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-    	HttpSession session = request.getSession();
-		session.removeAttribute(Const.COMMANDE );
-    	
+    	HttpSession session = request.getSession(false);
+    	if ( session != null ) {
+        	Object o = session.getAttribute(Const.COMMANDE);
+    		Commande commande = (Commande) o;
+    		commande.annuler();
+    		session.removeAttribute(Const.COMMANDE );
+    	}
 		forward(request, response, Page.WELCOME);
     }
 
