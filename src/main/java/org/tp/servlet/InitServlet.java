@@ -37,7 +37,7 @@ public class InitServlet extends javax.servlet.http.HttpServlet implements javax
         ServletContext servletContext = getServletContext();
         if ( servletContext != null ) {
         	servletContext.setAttribute(Const.LISTE_PAYS, PaysService.getPays() );
-        	servletContext.setAttribute(Const.LISTE_ADHERENTS, AdherentService.getAdherents() );
+        	//servletContext.setAttribute(Const.LISTE_ADHERENTS, AdherentService.getAdherents() );
         	servletContext.setAttribute(Const.LISTE_ARTICLES, ArticleService.getArticles() );
         }
         else {

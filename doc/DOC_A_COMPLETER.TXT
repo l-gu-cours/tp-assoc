@@ -1,28 +1,56 @@
 
+STOCKAGE DES DIFFERENTS OBJETS
+------------------------------
 
-ROLE DES SERVLETS ET/OU CONTROLLERS
------------------------------------
+Indiquer ou sont stockés les différents objets gérés par l'application 
+( au niveau "REQUEST" ou "SESSION" ou "APPLICATION" ) 
+ 
+ . Adherent connecté
+ 
+ . Liste des articles du catalogue
+ 
+ . Commande en cours
+ 
+ . Liste des pays 
+
+
+
+ROLE DES SERVLETS ET/OU CONTROLLERS ET DES JSP
+----------------------------------------------
 
 Pour chacune des actions du TP indiquer quelle servlet (ou servlet + controller) 
 est invoquée ainsi que la (ou les) JSP utilisée(s) pour afficher le résultat
 
-Exemple :
-						
-"Lister le catalogue"  
+Login :
    --> Servlet "Xxxxx"  ( ou Servlet "FrontController" --> Controller "Xxxx" )
-   --> JSP "Xxxx" si xxxx
-   --> JSP "Xxxx" si yyyy
+   --> JSP "Xxxx"
 
-etc...
+Page d'accueil :
+   --> Servlet "Xxxxx"  ( ou Servlet "FrontController" --> Controller "Xxxx" )
+   --> JSP "Xxxx"
 
+Affichage du catalogue des articles :
+   --> Servlet "Xxxxx"  ( ou Servlet "FrontController" --> Controller "Xxxx" )
+   --> JSP "Xxxx" 
 
+Commande d'un article du catalogue :
+   --> Servlet "Xxxxx"  ( ou Servlet "FrontController" --> Controller "Xxxx" )
+   --> JSP "Xxxx" 
 
-STOCKAGE DES DIFFERENTS OBJETS
-------------------------------
+Affichage de la commande en cours :
+   --> Servlet "Xxxxx"  ( ou Servlet "FrontController" --> Controller "Xxxx" )
+   --> JSP "Xxxx" 
 
-Objets stockés au niveau "SESSION" : 
+Annulation de la commande :
+   --> Servlet "Xxxxx"  ( ou Servlet "FrontController" --> Controller "Xxxx" )
+   --> JSP "Xxxx" 
+
+Déconnexion de l'utilisateur :
+   --> Servlet "Xxxxx"  ( ou Servlet "FrontController" --> Controller "Xxxx" )
+   --> JSP "Xxxx" 
+
+Création d'un compte utilisateur :
+   --> Servlet "Xxxxx"  ( ou Servlet "FrontController" --> Controller "Xxxx" )
+   --> JSP "Xxxx" 
+
  
- . Nom de l'objet & Classe de l'objet
-
-Objets stockés au niveau "REQUEST" : 
-

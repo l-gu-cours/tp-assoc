@@ -28,7 +28,7 @@
  <td>${article.nom}</td> 
  <td align="right"><fmt:formatNumber type="number" minFractionDigits="2" value="${article.prix}" /> </td> 
  <td align="right">${article.stock}</td>
- <td><a href="./commander?id=${article.code}">Commander</a></td>
+ <td><c:if test="${article.stock > 0}"><a href="./commander?id=${article.code}">Commander</a></c:if></td>
  </tr>
  </c:forEach>
 
